@@ -2479,14 +2479,16 @@ html[dir="rtl"] .marquee-track {
         style="width:100%;padding:17px 20px;background:var(--surface);border:1px solid var(--border);border-radius:12px;color:white;outline:none;">
 
       <input
-        type="email"
-        id="contactEmail"
-        name="email"
+        type="tel"
+        id="contactPhone"
+        name="phone"
         required
-        maxlength="150"
-        autocomplete="email"
-        data-i18n-placeholder="formEmail"
-        placeholder="Your email"
+        maxlength="30"
+        autocomplete="tel"
+        inputmode="tel"
+        pattern="[+0-9() .-]{7,30}"
+        data-i18n-placeholder="formPhone"
+        placeholder="Your phone number"
         style="width:100%;padding:17px 20px;background:var(--surface);border:1px solid var(--border);border-radius:12px;color:white;outline:none;">
 
       <textarea
@@ -2545,6 +2547,7 @@ html[dir="rtl"] .marquee-track {
   ↑
 </button>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 "use strict";
 
@@ -2553,11 +2556,17 @@ html[dir="rtl"] .marquee-track {
 ========================================= */
 
 /*
-  ضع بريدك الإلكتروني الحقيقي هنا حتى يعمل نموذج التواصل.
-  مثال: const CONTACT_EMAIL = "yourname@gmail.com";
+  Supabase public project configuration.
+  The publishable key is designed for browser use.
+  Protect the database with Row Level Security (RLS).
 */
+const SUPABASE_URL = "https://yzectimipxgekzlkjkoo.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_V5nUCWgydWDKr2mAHmHG2A_dZIYFYIF";
 
-const CONTACT_EMAIL = "your@email.com";
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY
+);
 
 const translations = {
 
@@ -2631,7 +2640,7 @@ const translations = {
     contactWork: "View my work",
 
     formName: "Your name",
-    formEmail: "Your email",
+    formPhone: "Your phone number",
     formMessage: "Tell me about your project",
     formSend: "Send message",
 
@@ -2712,7 +2721,7 @@ const translations = {
     contactWork: "Voir mes projets",
 
     formName: "Votre nom",
-    formEmail: "Votre adresse e-mail",
+    formPhone: "Votre numéro de téléphone",
     formMessage: "Parlez-moi de votre projet",
     formSend: "Envoyer le message",
 
@@ -2793,7 +2802,7 @@ const translations = {
     contactWork: "اكتشف أعمالي",
 
     formName: "اسمك",
-    formEmail: "بريدك الإلكتروني",
+    formPhone: "رقم هاتفك",
     formMessage: "أخبرني عن مشروعك",
     formSend: "إرسال الرسالة",
 
@@ -3095,62 +3104,77 @@ if (supportsCustomCursor && !prefersReducedMotion) {
 }
 
 /* =========================================
-   08. CONTACT FORM
+   08. CONTACT FORM — SUPABASE
 ========================================= */
 
 const contactForm = document.getElementById("contactForm");
 const formStatus = document.getElementById("formStatus");
+const submitButton = contactForm.querySelector('button[type="submit"]');
 
-contactForm.addEventListener("submit", event => {
+contactForm.addEventListener("submit", async event => {
 
   event.preventDefault();
 
   if (!contactForm.reportValidity()) return;
 
-  if (
-    !CONTACT_EMAIL ||
-    CONTACT_EMAIL === "your@email.com" ||
-    !CONTACT_EMAIL.includes("@")
-  ) {
-
-    formStatus.textContent =
-      currentLanguage === "ar"
-        ? "يرجى إضافة بريدك الإلكتروني الحقيقي في إعدادات الكود أولاً."
-        : currentLanguage === "fr"
-          ? "Veuillez d'abord ajouter votre véritable adresse e-mail dans le code."
-          : "Please add your real email address in the code first.";
-
-    return;
-
-  }
-
   const name = document.getElementById("contactName").value.trim();
-  const email = document.getElementById("contactEmail").value.trim();
+  const phone = document.getElementById("contactPhone").value.trim();
   const message = document.getElementById("contactMessage").value.trim();
 
-  if (!name || !email || !message) return;
+  if (!name || !phone || !message) return;
 
-  const subject = encodeURIComponent(
-    "Portfolio inquiry from " + name
-  );
-
-  const body = encodeURIComponent(
-    "Name: " + name +
-    "\nEmail: " + email +
-    "\n\nMessage:\n" + message
-  );
-
-  const mailto =
-    `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
-
-  window.location.href = mailto;
+  const originalButtonText = submitButton.innerHTML;
+  submitButton.disabled = true;
+  submitButton.style.opacity = ".65";
+  submitButton.style.cursor = "wait";
 
   formStatus.textContent =
     currentLanguage === "ar"
-      ? "تم تجهيز الرسالة. أكمل إرسالها عبر تطبيق البريد."
+      ? "جارٍ إرسال رسالتك..."
       : currentLanguage === "fr"
-        ? "Votre message est prêt. Terminez l'envoi depuis votre application e-mail."
-        : "Your message is ready. Complete sending through your email app.";
+        ? "Envoi de votre message..."
+        : "Sending your message...";
+
+  try {
+
+    const { error } = await supabaseClient
+      .from("contact_messages")
+      .insert([{
+        name: name,
+        phone: phone,
+        message: message
+      }]);
+
+    if (error) throw error;
+
+    formStatus.textContent =
+      currentLanguage === "ar"
+        ? "تم إرسال رسالتك بنجاح. شكراً لتواصلك!"
+        : currentLanguage === "fr"
+          ? "Votre message a été envoyé avec succès. Merci !"
+          : "Your message was sent successfully. Thank you!";
+
+    contactForm.reset();
+
+  } catch (error) {
+
+    console.error("Supabase contact form error:", error);
+
+    formStatus.textContent =
+      currentLanguage === "ar"
+        ? "تعذر إرسال الرسالة. تحقق من إعدادات Supabase والاتصال ثم حاول مجدداً."
+        : currentLanguage === "fr"
+          ? "Échec de l'envoi. Vérifiez la configuration Supabase et réessayez."
+          : "Message could not be sent. Check the Supabase setup and try again.";
+
+  } finally {
+
+    submitButton.disabled = false;
+    submitButton.style.opacity = "";
+    submitButton.style.cursor = "";
+    submitButton.innerHTML = originalButtonText;
+
+  }
 
 });
 
