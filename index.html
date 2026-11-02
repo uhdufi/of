@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#08090b">
+<meta name="color-scheme" content="dark">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="format-detection" content="telephone=no">
 <meta name="description" content="Creative Web Developer — Building ideas into extraordinary digital experiences.">
 <meta name="author" content="Digital Developer">
 <meta name="robots" content="index, follow">
@@ -1786,10 +1789,448 @@ html[dir="rtl"] .marquee-track {
     transform: none;
   }
 }
+
+
+.form-trap {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* =========================================
+   22. ACCESSIBILITY & QUALITY HARDENING
+========================================= */
+
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 20000;
+  padding: 12px 18px;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #08090b;
+  font-weight: 800;
+  transform: translateY(-160%);
+  transition: transform .2s ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+}
+
+button:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+input,
+textarea {
+  min-width: 0;
+}
+
+#formStatus {
+  min-height: 1.5em;
+}
+
+#contactForm [aria-invalid="true"] {
+  border-color: #ff7373 !important;
+  box-shadow: 0 0 0 3px rgba(255, 115, 115, .12);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .marquee-track,
+  .visual-core,
+  .orbit,
+  .status-dot {
+    animation: none !important;
+  }
+}
+
+@media (forced-colors: active) {
+  .btn,
+  .language-switch,
+  .service-card,
+  .project-card,
+  .stat-card {
+    border: 1px solid ButtonText;
+  }
+}
+
+/* Prevent accidental horizontal overflow from long user-generated text. */
+p,
+h1,
+h2,
+h3,
+a,
+button {
+  overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   17. VISUAL REDESIGN — PREMIUM EDITION
+   Visual layer only: keeps the original content and behavior.
+========================================================= */
+:root {
+  --bg: #070a10;
+  --bg-soft: #0b1018;
+  --surface: #101722;
+  --surface-2: #151f2d;
+  --surface-3: #1b2939;
+  --text: #f4f7fb;
+  --muted: #9aa8b8;
+  --muted-2: #718094;
+  --accent: #b9ff75;
+  --accent-rgb: 185,255,117;
+  --border: rgba(190,211,232,.13);
+  --border-hover: rgba(185,255,117,.48);
+  --radius-sm: 14px;
+  --radius-md: 22px;
+  --radius-lg: 30px;
+  --radius-xl: 38px;
+  --shadow: 0 28px 90px rgba(0,0,0,.42);
+}
+
+html { background: var(--bg); }
+body {
+  background:
+    radial-gradient(ellipse at 12% 8%, rgba(87,120,255,.13), transparent 32%),
+    radial-gradient(ellipse at 88% 38%, rgba(185,255,117,.065), transparent 30%),
+    linear-gradient(180deg, #070a10 0%, #0a1019 48%, #070a10 100%);
+}
+.background-grid {
+  opacity: .22;
+  background-size: 72px 72px;
+  background-image:
+    linear-gradient(rgba(169,193,220,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(169,193,220,.045) 1px, transparent 1px);
+  mask-image: linear-gradient(to bottom, black 0%, transparent 82%);
+}
+.ambient { opacity: .12; filter: blur(135px); }
+.ambient-one { background: #b9ff75; }
+.ambient-two { background: #657cff; }
+.noise { opacity: .018; }
+
+.header {
+  top: 12px;
+  width: min(var(--container), calc(100% - 32px));
+  left: 50%;
+  transform: translateX(-50%);
+  border: 1px solid transparent;
+  border-radius: 22px;
+}
+.header.scrolled {
+  background: rgba(10,15,23,.82);
+  border: 1px solid rgba(190,211,232,.14);
+  box-shadow: 0 12px 40px rgba(0,0,0,.2);
+  backdrop-filter: blur(24px) saturate(145%);
+}
+.header-inner { width: calc(100% - 34px); min-height: 72px; }
+.brand-logo { filter: drop-shadow(0 0 14px rgba(185,255,117,.16)); }
+.brand-text { font-size: 16px; letter-spacing: -.8px; }
+.nav { gap: clamp(16px,2.5vw,34px); }
+.nav a { font-size: 11px; letter-spacing: .15px; }
+.nav a::after { height: 2px; border-radius: 10px; }
+.language-switch {
+  background: rgba(255,255,255,.045);
+  border-color: rgba(190,211,232,.16);
+  padding: 4px;
+}
+.language-switch button.active {
+  box-shadow: 0 4px 16px rgba(185,255,117,.2);
+}
+
+.section { padding: clamp(82px,10vw,132px) 0; }
+.section-label {
+  letter-spacing: 2.5px;
+  font-size: 10px;
+  color: var(--accent);
+}
+.section-heading {
+  letter-spacing: -2.8px;
+  line-height: 1.06;
+}
+.section-description { font-size: 14px; max-width: 590px; }
+
+.hero {
+  min-height: 100svh;
+  padding-top: 165px;
+  padding-bottom: 100px;
+  isolation: isolate;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  width: min(70vw,780px);
+  height: min(70vw,780px);
+  right: -18%;
+  top: 8%;
+  border-radius: 50%;
+  border: 1px solid rgba(185,255,117,.07);
+  box-shadow: 0 0 0 55px rgba(185,255,117,.018), 0 0 0 110px rgba(110,137,255,.018);
+  pointer-events: none;
+  z-index: -1;
+}
+.hero-grid { gap: clamp(28px,5vw,70px); }
+.availability {
+  padding: 11px 17px;
+  background: rgba(18,28,39,.7);
+  border-color: rgba(185,255,117,.2);
+  box-shadow: inset 0 1px rgba(255,255,255,.04);
+}
+.hero h1 {
+  font-size: clamp(48px,7.6vw,104px);
+  letter-spacing: clamp(-6px,-.55vw,-2px);
+  line-height: .99;
+  text-wrap: balance;
+}
+.hero h1 .highlight {
+  background: linear-gradient(100deg,#b9ff75 5%,#d8ff9e 48%,#8fe7d2 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.hero-description { max-width: 510px; font-size: 14px; }
+.hero-meta { border-color: rgba(190,211,232,.15); }
+.hero-meta-item strong { font-size: 23px; }
+.hero-meta-item span { letter-spacing: 1.2px; }
+.visual-frame {
+  border-color: rgba(185,255,117,.22);
+  background:
+    radial-gradient(circle at 50% 45%,rgba(185,255,117,.13),transparent 55%),
+    radial-gradient(circle at 70% 75%,rgba(101,124,255,.12),transparent 52%);
+  box-shadow: inset 0 0 80px rgba(185,255,117,.025), 0 30px 100px rgba(0,0,0,.18);
+}
+.visual-frame::before, .visual-frame::after { border-color: rgba(190,211,232,.11); }
+.visual-core {
+  background: linear-gradient(145deg,#263b2a,#111c20 75%);
+  border-color: rgba(185,255,117,.45);
+  box-shadow: 0 0 90px rgba(185,255,117,.13), inset 0 0 45px rgba(185,255,117,.08);
+}
+.visual-core span {
+  background: linear-gradient(145deg,#e0ffc0,#a5f35e);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.floating-tag {
+  background: rgba(17,26,38,.82);
+  border-color: rgba(190,211,232,.16);
+  box-shadow: 0 18px 45px rgba(0,0,0,.28);
+  backdrop-filter: blur(18px);
+}
+
+.btn {
+  min-height: 54px;
+  padding-inline: 26px;
+  border-radius: 14px;
+  letter-spacing: .25px;
+  font-size: 11px;
+}
+.btn-primary {
+  background: linear-gradient(135deg,#caff91,#a9f35e);
+  border-color: transparent;
+  color: #10180d;
+  box-shadow: 0 9px 28px rgba(185,255,117,.13);
+}
+.btn-primary:hover {
+  box-shadow: 0 16px 38px rgba(185,255,117,.23);
+  transform: translateY(-3px);
+}
+.btn-outline {
+  background: rgba(255,255,255,.035);
+  border-color: rgba(190,211,232,.2);
+  backdrop-filter: blur(10px);
+}
+.btn-outline:hover { background: rgba(185,255,117,.07); }
+
+.about-number {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(185,255,117,.34);
+}
+.about-content p { max-width: 680px; }
+.stat-card {
+  background: linear-gradient(145deg,rgba(21,31,45,.92),rgba(12,19,29,.92));
+  border-color: rgba(190,211,232,.13);
+  box-shadow: inset 0 1px rgba(255,255,255,.035);
+}
+.stat-card:hover { box-shadow: 0 18px 45px rgba(0,0,0,.2); }
+
+.services-grid { gap: 18px; }
+.service-card {
+  min-height: 300px;
+  padding: 34px;
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at 100% 0%,rgba(105,130,255,.075),transparent 42%),
+    linear-gradient(145deg,rgba(20,31,45,.96),rgba(11,17,26,.98));
+  border-color: rgba(190,211,232,.13);
+  box-shadow: inset 0 1px rgba(255,255,255,.035);
+}
+.service-card:hover {
+  border-color: rgba(185,255,117,.4);
+  box-shadow: 0 25px 65px rgba(0,0,0,.24), 0 0 35px rgba(185,255,117,.045);
+}
+.service-icon {
+  width: 58px; height: 58px;
+  border-radius: 18px;
+  background: linear-gradient(145deg,rgba(185,255,117,.12),rgba(105,130,255,.08));
+  border-color: rgba(185,255,117,.2);
+}
+
+.skills-section {
+  background: linear-gradient(180deg,transparent,rgba(20,31,45,.35),transparent);
+}
+.skill-item { padding: 15px 17px; border: 1px solid rgba(190,211,232,.09); border-radius: 15px; background: rgba(15,23,35,.6); }
+.skill-track { height: 6px; border-radius: 20px; background: rgba(255,255,255,.09); overflow: hidden; }
+.skill-progress { border-radius: inherit; background: linear-gradient(90deg,#8fe7d2,#b9ff75); box-shadow: 0 0 16px rgba(185,255,117,.22); }
+
+.project-card {
+  background: linear-gradient(145deg,#131e2c,#0c131e);
+  border-color: rgba(190,211,232,.14);
+  box-shadow: 0 22px 65px rgba(0,0,0,.18);
+}
+.project-card:hover {
+  border-color: rgba(185,255,117,.42);
+  box-shadow: 0 30px 90px rgba(0,0,0,.34),0 0 35px rgba(185,255,117,.045);
+}
+.project-image { background: #111b29; }
+.project-image img { filter: saturate(.92) contrast(1.03); }
+.project-index {
+  background: rgba(8,13,20,.76);
+  border-color: rgba(255,255,255,.18);
+  backdrop-filter: blur(16px);
+}
+.project-content { padding: clamp(25px,4vw,48px); }
+.project-tags span {
+  border: 1px solid rgba(190,211,232,.14);
+  background: rgba(255,255,255,.035);
+  border-radius: 30px;
+  padding: 7px 12px;
+}
+.project-link { color: var(--accent); }
+
+.process-card {
+  border: 1px solid rgba(190,211,232,.12);
+  border-radius: 20px;
+  padding: 26px 22px;
+  background: linear-gradient(145deg,rgba(20,31,45,.72),rgba(11,17,26,.65));
+}
+.process-card:hover {
+  border-color: rgba(185,255,117,.42);
+  transform: translateY(-5px);
+  background: linear-gradient(145deg,rgba(27,42,52,.88),rgba(12,20,29,.82));
+}
+.process-card h3 { margin-top: 30px; }
+
+.contact-box {
+  border-color: rgba(185,255,117,.25);
+  background:
+    radial-gradient(ellipse at 92% 12%,rgba(185,255,117,.15),transparent 37%),
+    radial-gradient(ellipse at 0% 100%,rgba(101,124,255,.13),transparent 42%),
+    linear-gradient(135deg,#172536,#0c141e 75%);
+  box-shadow: 0 35px 100px rgba(0,0,0,.28), inset 0 1px rgba(255,255,255,.06);
+}
+.contact-box h2 span {
+  background: linear-gradient(100deg,#b9ff75,#8fe7d2);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+#contactForm input,
+#contactForm textarea {
+  color: var(--text);
+  background: rgba(16,26,39,.82) !important;
+  border: 1px solid rgba(190,211,232,.16) !important;
+  border-radius: 14px !important;
+  padding: 15px 17px !important;
+  transition: border-color .25s ease, box-shadow .25s ease, background .25s ease;
+}
+#contactForm input:focus,
+#contactForm textarea:focus {
+  outline: none;
+  border-color: rgba(185,255,117,.65) !important;
+  box-shadow: 0 0 0 4px rgba(185,255,117,.09) !important;
+}
+#contactForm input::placeholder,
+#contactForm textarea::placeholder { color: #8291a3; }
+
+.footer {
+  background: rgba(5,9,15,.32);
+  border-color: rgba(190,211,232,.12);
+}
+.footer-copy strong { color: var(--accent); }
+.back-top {
+  border-radius: 15px;
+  box-shadow: 0 12px 35px rgba(0,0,0,.3);
+}
+
+.reveal { will-change: transform, opacity; }
+a, button, .service-card, .project-card, .stat-card, .process-card {
+  -webkit-tap-highlight-color: transparent;
+}
+:focus-visible { outline-offset: 5px; }
+
+@media (max-width: 900px) {
+  .header { top: 8px; width: calc(100% - 20px); }
+  .header-inner { min-height: 66px; }
+  .hero { padding-top: 140px; }
+  .hero::before { width: 90vw; height: 90vw; right: -42%; top: 20%; }
+  .services-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .process-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (max-width: 600px) {
+  .container { width: min(var(--container),calc(100% - 34px)); }
+  .section { padding: 82px 0; }
+  .section-heading { letter-spacing: -1.8px; }
+  .hero { padding-top: 128px; padding-bottom: 90px; }
+  .hero h1 { font-size: clamp(43px,12vw,66px); letter-spacing: -2.8px; }
+  .hero-meta { gap: 16px; flex-wrap: wrap; }
+  .hero-visual { min-height: 330px; margin-top: 10px; }
+  .visual-frame { width: min(78vw,310px); }
+  .visual-core { width: 150px; height: 150px; }
+  .visual-core span { font-size: 58px; }
+  .floating-tag { font-size: 9px; padding: 9px 12px; }
+  .tag-one { right: 0; }
+  .tag-two { left: 0; }
+  .services-grid, .process-grid { grid-template-columns: 1fr; }
+  .service-card { min-height: 250px; padding: 27px; }
+  .project-card { grid-template-columns: 1fr; }
+  .project-image, .project-image img { min-height: 230px; }
+  .contact-box { padding: 30px 24px; border-radius: 27px; }
+  .contact-box h2 { letter-spacing: -2px; }
+  .footer-inner { flex-direction: column; text-align: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+  .header-inner { gap: 10px; }
+  .brand-logo { width: 39px; height: 39px; }
+  .brand-text { font-size: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { will-change: auto; }
+}
+
 </style>
 </head>
 
 <body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
 
 <!-- BACKGROUND -->
 <div class="background-grid"></div>
@@ -1849,7 +2290,7 @@ html[dir="rtl"] .marquee-track {
   </div>
 </header>
 
-<main>
+<main id="main-content" tabindex="-1">
 
 <!-- ======================================
      HERO
@@ -2467,6 +2908,12 @@ html[dir="rtl"] .marquee-track {
     <form id="contactForm"
           style="max-width:650px;margin:35px auto 0;display:grid;gap:15px;">
 
+      <div class="form-trap" aria-hidden="true">
+        <label for="contactWebsite">Leave this field empty</label>
+        <input type="text" id="contactWebsite" name="website"
+               tabindex="-1" autocomplete="off">
+      </div>
+
       <input
         type="text"
         id="contactName"
@@ -2563,10 +3010,35 @@ html[dir="rtl"] .marquee-track {
 const SUPABASE_URL = "https://yzectimipxgekzlkjkoo.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_V5nUCWgydWDKr2mAHmHG2A_dZIYFYIF";
 
-const supabaseClient = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_PUBLISHABLE_KEY
-);
+let supabaseClient = null;
+
+try {
+  if (
+    window.supabase &&
+    typeof window.supabase.createClient === "function" &&
+    SUPABASE_URL.startsWith("https://") &&
+    SUPABASE_PUBLISHABLE_KEY
+  ) {
+    supabaseClient = window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY,
+      {
+        auth: {
+          persistSession: false,
+          autoRefreshToken: false,
+          detectSessionInUrl: false
+        },
+        global: {
+          headers: {
+            "X-Client-Info": "digital-portfolio-web"
+          }
+        }
+      }
+    );
+  }
+} catch (configurationError) {
+  console.error("Supabase initialization failed:", configurationError);
+}
 
 const translations = {
 
@@ -2829,6 +3301,7 @@ function changeLanguage(language) {
 
   document.documentElement.lang = language;
   document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
+  document.documentElement.dataset.language = language;
 
   document.querySelectorAll("[data-i18n]").forEach(element => {
 
@@ -2968,8 +3441,19 @@ function handleScroll() {
 
 }
 
-window.addEventListener("scroll", handleScroll, { passive: true });
+let scrollFramePending = false;
 
+window.addEventListener("scroll", () => {
+  if (scrollFramePending) return;
+
+  scrollFramePending = true;
+  requestAnimationFrame(() => {
+    handleScroll();
+    scrollFramePending = false;
+  });
+}, { passive: true });
+
+window.addEventListener("resize", handleScroll, { passive: true });
 handleScroll();
 
 backTop.addEventListener("click", () => {
@@ -3109,73 +3593,154 @@ if (supportsCustomCursor && !prefersReducedMotion) {
 
 const contactForm = document.getElementById("contactForm");
 const formStatus = document.getElementById("formStatus");
-const submitButton = contactForm.querySelector('button[type="submit"]');
+const submitButton = contactForm?.querySelector('button[type="submit"]');
+const contactName = document.getElementById("contactName");
+const contactPhone = document.getElementById("contactPhone");
+const contactMessage = document.getElementById("contactMessage");
+const contactWebsite = document.getElementById("contactWebsite");
 
-contactForm.addEventListener("submit", async event => {
+let isSubmittingContact = false;
 
+function getFormMessage(key) {
+  const messages = {
+    sending: {
+      en: "Sending your message...",
+      fr: "Envoi de votre message...",
+      ar: "جارٍ إرسال رسالتك..."
+    },
+    success: {
+      en: "Your message was sent successfully. Thank you!",
+      fr: "Votre message a été envoyé avec succès. Merci !",
+      ar: "تم إرسال رسالتك بنجاح. شكراً لتواصلك!"
+    },
+    unavailable: {
+      en: "The message service is temporarily unavailable. Please try again later.",
+      fr: "Le service de messagerie est temporairement indisponible. Réessayez plus tard.",
+      ar: "خدمة إرسال الرسائل غير متاحة مؤقتاً. حاول مرة أخرى لاحقاً."
+    },
+    error: {
+      en: "Message could not be sent. Check your connection and try again.",
+      fr: "Échec de l'envoi. Vérifiez votre connexion et réessayez.",
+      ar: "تعذر إرسال الرسالة. تحقق من الاتصال ثم حاول مجدداً."
+    },
+    invalid: {
+      en: "Please complete all fields correctly.",
+      fr: "Veuillez remplir correctement tous les champs.",
+      ar: "يرجى ملء جميع الحقول بشكل صحيح."
+    }
+  };
+
+  return messages[key]?.[currentLanguage] || messages[key]?.en || "";
+}
+
+function setContactStatus(message, state = "info") {
+  if (!formStatus) return;
+  formStatus.textContent = message;
+  formStatus.dataset.state = state;
+  formStatus.setAttribute("role", state === "error" ? "alert" : "status");
+}
+
+function markInvalid(field, invalid) {
+  if (!field) return;
+  if (invalid) {
+    field.setAttribute("aria-invalid", "true");
+  } else {
+    field.removeAttribute("aria-invalid");
+  }
+}
+
+[contactName, contactPhone, contactMessage].forEach(field => {
+  field?.addEventListener("input", () => markInvalid(field, false));
+});
+
+contactForm?.addEventListener("submit", async event => {
   event.preventDefault();
 
-  if (!contactForm.reportValidity()) return;
+  if (isSubmittingContact) return;
 
-  const name = document.getElementById("contactName").value.trim();
-  const phone = document.getElementById("contactPhone").value.trim();
-  const message = document.getElementById("contactMessage").value.trim();
+  if (!contactForm.reportValidity()) {
+    setContactStatus(getFormMessage("invalid"), "error");
+    return;
+  }
 
-  if (!name || !phone || !message) return;
+  // A filled honeypot is treated as automated spam. Do not store it.
+  if (contactWebsite?.value.trim()) {
+    contactForm.reset();
+    setContactStatus(getFormMessage("success"), "success");
+    return;
+  }
 
-  const originalButtonText = submitButton.innerHTML;
-  submitButton.disabled = true;
-  submitButton.style.opacity = ".65";
-  submitButton.style.cursor = "wait";
+  const name = contactName?.value.trim() || "";
+  const phone = contactPhone?.value.trim() || "";
+  const message = contactMessage?.value.trim() || "";
 
-  formStatus.textContent =
-    currentLanguage === "ar"
-      ? "جارٍ إرسال رسالتك..."
-      : currentLanguage === "fr"
-        ? "Envoi de votre message..."
-        : "Sending your message...";
+  const invalidName = name.length < 2 || name.length > 100;
+  const invalidPhone = !/^[+0-9() .-]{7,30}$/.test(phone);
+  const invalidMessage = message.length < 5 || message.length > 3000;
+
+  markInvalid(contactName, invalidName);
+  markInvalid(contactPhone, invalidPhone);
+  markInvalid(contactMessage, invalidMessage);
+
+  if (invalidName || invalidPhone || invalidMessage) {
+    setContactStatus(getFormMessage("invalid"), "error");
+    (invalidName ? contactName : invalidPhone ? contactPhone : contactMessage)?.focus();
+    return;
+  }
+
+  if (!supabaseClient) {
+    setContactStatus(getFormMessage("unavailable"), "error");
+    return;
+  }
+
+  const originalButtonHTML = submitButton?.innerHTML || "";
+  isSubmittingContact = true;
+
+  if (submitButton) {
+    submitButton.disabled = true;
+    submitButton.setAttribute("aria-busy", "true");
+    submitButton.textContent = getFormMessage("sending");
+  }
+
+  setContactStatus(getFormMessage("sending"), "info");
 
   try {
-
     const { error } = await supabaseClient
       .from("contact_messages")
       .insert([{
-        name: name,
-        phone: phone,
-        message: message
+        name,
+        phone,
+        message
       }]);
 
-    if (error) throw error;
-
-    formStatus.textContent =
-      currentLanguage === "ar"
-        ? "تم إرسال رسالتك بنجاح. شكراً لتواصلك!"
-        : currentLanguage === "fr"
-          ? "Votre message a été envoyé avec succès. Merci !"
-          : "Your message was sent successfully. Thank you!";
+    if (error) {
+      // Keep detailed diagnostics in the console, not in the public UI.
+      console.error("Supabase contact form error:", {
+        code: error.code,
+        message: error.message,
+        details: error.details,
+        hint: error.hint
+      });
+      throw error;
+    }
 
     contactForm.reset();
+    [contactName, contactPhone, contactMessage].forEach(field => {
+      markInvalid(field, false);
+    });
+    setContactStatus(getFormMessage("success"), "success");
 
   } catch (error) {
-
-    console.error("Supabase contact form error:", error);
-
-    formStatus.textContent =
-      currentLanguage === "ar"
-        ? "تعذر إرسال الرسالة. تحقق من إعدادات Supabase والاتصال ثم حاول مجدداً."
-        : currentLanguage === "fr"
-          ? "Échec de l'envoi. Vérifiez la configuration Supabase et réessayez."
-          : "Message could not be sent. Check the Supabase setup and try again.";
-
+    setContactStatus(getFormMessage("error"), "error");
   } finally {
+    isSubmittingContact = false;
 
-    submitButton.disabled = false;
-    submitButton.style.opacity = "";
-    submitButton.style.cursor = "";
-    submitButton.innerHTML = originalButtonText;
-
+    if (submitButton) {
+      submitButton.disabled = false;
+      submitButton.removeAttribute("aria-busy");
+      submitButton.innerHTML = originalButtonHTML;
+    }
   }
-
 });
 
 /* =========================================
@@ -3192,7 +3757,7 @@ document.getElementById("year").textContent =
 const loader = document.getElementById("loader");
 
 function hideLoader() {
-  loader.classList.add("hidden");
+  if (loader) loader.classList.add("hidden");
 }
 
 window.addEventListener("load", hideLoader);
