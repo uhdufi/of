@@ -2238,6 +2238,30 @@ html[dir=rtl] .hero h1,html[dir=rtl] .section-heading,html[dir=rtl] .contact-box
 @media(max-width:480px){.header-inner,.container{width:calc(100% - 36px)}.brand-text{font-size:16px}.brand-logo{width:29px;height:29px}.brand{gap:8px}.header-actions{gap:8px}.language-switch button{padding:6px 7px}.hero{padding-top:112px;padding-bottom:42px}.hero h1{font-size:52px}.hero-description{font-size:14px}.hero-visual{min-height:350px}.visual-frame{width:245px}.visual-core{width:135px;height:135px}.floating-tag{font-size:8px;padding:10px}.hero-meta{gap:24px}.hero-meta-item span{font-size:8px}.hero-meta-item strong{font-size:23px}.hero-buttons .btn{padding:0 20px}.section-heading{font-size:39px}.contact-box h2{font-size:53px}.process-grid{gap:26px 15px}.process-card h3{font-size:20px}#contactForm{padding:20px}.contact-actions{flex-wrap:wrap}.section{padding:60px 0}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
+<style>
+/* Selected work: featured project and compact gallery */
+#projects .projects-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px;align-items:start}
+#projects .project-card{display:flex;flex-direction:column;min-width:0;margin:0;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:#faf9f4;transition:box-shadow .3s,transform .3s}
+#projects .project-card:hover{transform:translateY(-4px);box-shadow:0 18px 42px #252d1510}
+#projects .project-image{display:block;width:100%;height:auto;min-height:0;aspect-ratio:1.5;border-radius:0;position:relative;isolation:isolate}
+#projects .project-image img{display:block;width:100%;height:100%;min-height:0;object-fit:cover;transition:transform .6s}
+#projects .project-image:after{display:none}
+#projects .project-card:hover img{transform:scale(1.035)}
+#projects .project-content{padding:28px;border:0;min-width:0}
+#projects .project-content h3{font-size:clamp(27px,3vw,40px);margin:10px 0;line-height:1.2}
+#projects .project-content p{max-width:50ch;line-height:1.85}
+#projects .project-tags{margin:20px 0}
+#projects .project-link{display:flex;justify-content:space-between;border-top:1px solid var(--border);padding-top:18px;width:100%;color:#293722;min-height:44px}
+#projects .project-featured{grid-column:1/-1;display:grid;grid-template-columns:1.25fr 1fr;align-items:stretch;background:#e9eddf}
+#projects .project-featured .project-image{aspect-ratio:1.5;height:100%}
+#projects .project-featured .project-content{display:flex;flex-direction:column;justify-content:center;padding:clamp(25px,4vw,55px)}
+#projects .work-domain{font-size:12px;color:#62665b;margin-bottom:20px;display:block;text-align:start}
+#projects .work-arrow{font-size:.7em;float:inline-end;font-weight:400}
+#projects .project-count{border:1px solid var(--border);padding:10px 15px;border-radius:30px;white-space:nowrap}
+#projects a:focus-visible{outline:3px solid #526b2a;outline-offset:-4px}
+@media(max-width:800px){#projects .project-featured{display:flex}#projects .project-featured .project-image{height:auto}#projects .projects-grid{gap:22px}#projects .project-content{padding:22px}}
+@media(max-width:600px){#projects .projects-grid{grid-template-columns:minmax(0,1fr)}#projects .project-content h3{font-size:30px}}
+</style>
 </head>
 
 <body>
@@ -2698,18 +2722,28 @@ html[dir=rtl] .hero h1,html[dir=rtl] .section-heading,html[dir=rtl] .contact-box
       </div>
 
       <span class="project-count" data-i18n="projectCount">
-        02 PROJECTS
+        03 PROJECTS
       </span>
 
     </div>
 
     <div class="projects-grid">
+<article class="project-card project-featured reveal">
+ <a class="project-image" href="https://wafaone.world/" target="_blank" rel="noopener noreferrer" aria-label="Wafa One — wafaone.world">
+ <img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22800%22%20viewBox%3D%220%200%201200%20800%22%3E%3Crect%20width%3D%221200%22%20height%3D%22800%22%20fill%3D%22%23ffdf00%22%2F%3E%3Ccircle%20cx%3D%221050%22%20cy%3D%22110%22%20r%3D%22360%22%20fill%3D%22none%22%20stroke%3D%22%2320231e%22%20stroke-width%3D%221%22%20opacity%3D%22.17%22%2F%3E%3Ccircle%20cx%3D%221050%22%20cy%3D%22110%22%20r%3D%22290%22%20fill%3D%22none%22%20stroke%3D%22%2320231e%22%20opacity%3D%22.17%22%2F%3E%3Cpath%20d%3D%22M90%20135h75%22%20stroke%3D%22%2320231e%22%20stroke-width%3D%228%22%2F%3E%3Ctext%20x%3D%2290%22%20y%3D%22205%22%20font-family%3D%22Arial%22%20font-size%3D%2218%22%20letter-spacing%3D%225%22%20fill%3D%22%2320231e%22%3EWEB%20DESIGN%20%2F%20DEVELOPMENT%3C%2Ftext%3E%3Ctext%20x%3D%2280%22%20y%3D%22420%22%20font-family%3D%22Arial%22%20font-weight%3D%22bold%22%20font-size%3D%22145%22%20letter-spacing%3D%22-8%22%20fill%3D%22%2320231e%22%3EWafa%20One.%3C%2Ftext%3E%3Ctext%20x%3D%2290%22%20y%3D%22480%22%20font-family%3D%22Arial%22%20font-size%3D%2226%22%20fill%3D%22%2320231e%22%3Ewafaone.world%3C%2Ftext%3E%3Crect%20x%3D%2290%22%20y%3D%22575%22%20width%3D%221020%22%20height%3D%221%22%20fill%3D%22%2320231e%22%20opacity%3D%22.3%22%2F%3E%3Ctext%20x%3D%2290%22%20y%3D%22630%22%20font-family%3D%22Arial%22%20font-size%3D%2215%22%20letter-spacing%3D%223%22%20fill%3D%22%2320231e%22%3EPROJECT%20COVER%20%2F%2003%3C%2Ftext%3E%3Cpath%20d%3D%22M1010%20450l75-75m-75%200h75v75%22%20fill%3D%22none%22%20stroke%3D%22%2320231e%22%20stroke-width%3D%226%22%2F%3E%3C%2Fsvg%3E" alt="Wafa One — project cover" loading="lazy" width="1200" height="800">
+ <span class="project-index">PROJECT / 03</span></a>
+ <div class="project-content"><span class="project-category" data-i18n="projectCategory">WEB DEVELOPMENT</span>
+ <h3>Wafa One <span class="work-arrow" aria-hidden="true">↗</span></h3>
+ <span class="work-domain" dir="ltr">wafaone.world</span>
+ <p data-i18n="project3Text">A website project with a clear visual identity and a direct path to explore it online.</p>
+ <div class="project-tags"><span>Web Design</span><span>Development</span><span>UI / UX</span></div>
+ <a class="project-link" href="https://wafaone.world/" target="_blank" rel="noopener noreferrer"><span data-i18n="visitProject">EXPLORE PROJECT</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M7 7h10v10"/></svg></a></div></article>
 
       <!-- PROJECT 01 -->
 
       <article class="project-card reveal">
 
-        <div class="project-image">
+        <a class="project-image" href="https://offreregional.work/" target="_blank" rel="noopener noreferrer" aria-label="https://offreregional.work/">
 
           <img src="web1.png" data-fallback="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22900%22%20height%3D%22650%22%20viewBox%3D%220%200%20900%20650%22%3E%3Crect%20width%3D%22900%22%20height%3D%22650%22%20fill%3D%22%23dae3cc%22/%3E%3Ccircle%20cx%3D%22760%22%20cy%3D%2280%22%20r%3D%22250%22%20fill%3D%22%23b6d48c%22%20opacity%3D%22.45%22/%3E%3Cg%20transform%3D%22translate%2870%20100%29%20rotate%28-4%20380%20225%29%22%3E%3Crect%20x%3D%228%22%20y%3D%2220%22%20width%3D%22760%22%20height%3D%22460%22%20rx%3D%2212%22%20fill%3D%22%23293d2b%22%20opacity%3D%22.12%22/%3E%3Crect%20width%3D%22760%22%20height%3D%22460%22%20rx%3D%2212%22%20fill%3D%22%23f8f7f1%22/%3E%3Cpath%20d%3D%22M0%2045h760%22%20stroke%3D%22%23dae3cc%22/%3E%3Ccircle%20cx%3D%2222%22%20cy%3D%2223%22%20r%3D%224%22%20fill%3D%22%23b6d48c%22/%3E%3Ccircle%20cx%3D%2238%22%20cy%3D%2223%22%20r%3D%224%22%20fill%3D%22%23dae3cc%22/%3E%3Ctext%20x%3D%2260%22%20y%3D%2228%22%20font-family%3D%22Arial%22%20font-size%3D%2212%22%20fill%3D%22%23293d2b%22%3EOFFRE%20REGIONAL%3C/text%3E%3Ctext%20x%3D%2242%22%20y%3D%22115%22%20font-family%3D%22Arial%22%20font-size%3D%2211%22%20letter-spacing%3D%223%22%20fill%3D%22%23293d2b%22%3EDESIGN%20/%20DEVELOPMENT%3C/text%3E%3Ctext%20x%3D%2240%22%20y%3D%22185%22%20font-family%3D%22Arial%22%20font-weight%3D%22bold%22%20font-size%3D%2258%22%20fill%3D%22%23293d2b%22%3EOffre%20Regional%3C/text%3E%3Crect%20x%3D%2242%22%20y%3D%22215%22%20width%3D%22265%22%20height%3D%228%22%20rx%3D%224%22%20fill%3D%22%23dae3cc%22/%3E%3Crect%20x%3D%2242%22%20y%3D%22235%22%20width%3D%22210%22%20height%3D%228%22%20rx%3D%224%22%20fill%3D%22%23dae3cc%22/%3E%3Crect%20x%3D%2242%22%20y%3D%22276%22%20width%3D%22135%22%20height%3D%2237%22%20rx%3D%224%22%20fill%3D%22%23293d2b%22/%3E%3Cpath%20d%3D%22M65%20295h75m-8-6%208%206-8%206%22%20fill%3D%22none%22%20stroke%3D%22%23f8f7f1%22%20stroke-width%3D%222%22/%3E%3Crect%20x%3D%22440%22%20y%3D%22100%22%20width%3D%22265%22%20height%3D%22235%22%20rx%3D%22120%22%20fill%3D%22%23b6d48c%22/%3E%3Cpath%20d%3D%22m490%20280%2072-132%2082%20132zm35-12h95%22%20fill%3D%22none%22%20stroke%3D%22%23293d2b%22%20stroke-width%3D%2212%22/%3E%3Cg%20fill%3D%22%23dae3cc%22%3E%3Crect%20x%3D%2242%22%20y%3D%22365%22%20width%3D%22205%22%20height%3D%2258%22%20rx%3D%225%22/%3E%3Crect%20x%3D%22265%22%20y%3D%22365%22%20width%3D%22205%22%20height%3D%2258%22%20rx%3D%225%22/%3E%3Crect%20x%3D%22488%22%20y%3D%22365%22%20width%3D%22205%22%20height%3D%2258%22%20rx%3D%225%22/%3E%3C/g%3E%3C/g%3E%3Ctext%20x%3D%2270%22%20y%3D%22620%22%20font-family%3D%22Arial%22%20font-size%3D%2212%22%20letter-spacing%3D%222%22%20fill%3D%22%23293d2b%22%3EPROJECT%2001%20/%20CONCEPT%20COVER%3C/text%3E%3C/svg%3E"
                alt="Offre Regional website screenshot"
@@ -2717,7 +2751,7 @@ html[dir=rtl] .hero h1,html[dir=rtl] .section-heading,html[dir=rtl] .contact-box
 
           <span class="project-index">PROJECT / 01</span>
 
-        </div>
+        </a>
 
         <div class="project-content">
 
@@ -2761,7 +2795,7 @@ html[dir=rtl] .hero h1,html[dir=rtl] .section-heading,html[dir=rtl] .contact-box
 
       <article class="project-card reveal">
 
-        <div class="project-image">
+        <a class="project-image" href="https://offrebac.work/" target="_blank" rel="noopener noreferrer" aria-label="https://offrebac.work/">
 
           <img src="web2.png" data-fallback="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22900%22%20height%3D%22650%22%20viewBox%3D%220%200%20900%20650%22%3E%3Crect%20width%3D%22900%22%20height%3D%22650%22%20fill%3D%22%23dfd9ed%22/%3E%3Ccircle%20cx%3D%22760%22%20cy%3D%2280%22%20r%3D%22250%22%20fill%3D%22%23b8a2d8%22%20opacity%3D%22.45%22/%3E%3Cg%20transform%3D%22translate%2870%20100%29%20rotate%28-4%20380%20225%29%22%3E%3Crect%20x%3D%228%22%20y%3D%2220%22%20width%3D%22760%22%20height%3D%22460%22%20rx%3D%2212%22%20fill%3D%22%23362d4b%22%20opacity%3D%22.12%22/%3E%3Crect%20width%3D%22760%22%20height%3D%22460%22%20rx%3D%2212%22%20fill%3D%22%23f8f7f1%22/%3E%3Cpath%20d%3D%22M0%2045h760%22%20stroke%3D%22%23dfd9ed%22/%3E%3Ccircle%20cx%3D%2222%22%20cy%3D%2223%22%20r%3D%224%22%20fill%3D%22%23b8a2d8%22/%3E%3Ccircle%20cx%3D%2238%22%20cy%3D%2223%22%20r%3D%224%22%20fill%3D%22%23dfd9ed%22/%3E%3Ctext%20x%3D%2260%22%20y%3D%2228%22%20font-family%3D%22Arial%22%20font-size%3D%2212%22%20fill%3D%22%23362d4b%22%3EOFFRE%20BAC%3C/text%3E%3Ctext%20x%3D%2242%22%20y%3D%22115%22%20font-family%3D%22Arial%22%20font-size%3D%2211%22%20letter-spacing%3D%223%22%20fill%3D%22%23362d4b%22%3EDESIGN%20/%20DEVELOPMENT%3C/text%3E%3Ctext%20x%3D%2240%22%20y%3D%22185%22%20font-family%3D%22Arial%22%20font-weight%3D%22bold%22%20font-size%3D%2258%22%20fill%3D%22%23362d4b%22%3EOffre%20Bac%3C/text%3E%3Crect%20x%3D%2242%22%20y%3D%22215%22%20width%3D%22265%22%20height%3D%228%22%20rx%3D%224%22%20fill%3D%22%23dfd9ed%22/%3E%3Crect%20x%3D%2242%22%20y%3D%22235%22%20width%3D%22210%22%20height%3D%228%22%20rx%3D%224%22%20fill%3D%22%23dfd9ed%22/%3E%3Crect%20x%3D%2242%22%20y%3D%22276%22%20width%3D%22135%22%20height%3D%2237%22%20rx%3D%224%22%20fill%3D%22%23362d4b%22/%3E%3Cpath%20d%3D%22M65%20295h75m-8-6%208%206-8%206%22%20fill%3D%22none%22%20stroke%3D%22%23f8f7f1%22%20stroke-width%3D%222%22/%3E%3Crect%20x%3D%22440%22%20y%3D%22100%22%20width%3D%22265%22%20height%3D%22235%22%20rx%3D%22120%22%20fill%3D%22%23b8a2d8%22/%3E%3Cpath%20d%3D%22m490%20280%2072-132%2082%20132zm35-12h95%22%20fill%3D%22none%22%20stroke%3D%22%23362d4b%22%20stroke-width%3D%2212%22/%3E%3Cg%20fill%3D%22%23dfd9ed%22%3E%3Crect%20x%3D%2242%22%20y%3D%22365%22%20width%3D%22205%22%20height%3D%2258%22%20rx%3D%225%22/%3E%3Crect%20x%3D%22265%22%20y%3D%22365%22%20width%3D%22205%22%20height%3D%2258%22%20rx%3D%225%22/%3E%3Crect%20x%3D%22488%22%20y%3D%22365%22%20width%3D%22205%22%20height%3D%2258%22%20rx%3D%225%22/%3E%3C/g%3E%3C/g%3E%3Ctext%20x%3D%2270%22%20y%3D%22620%22%20font-family%3D%22Arial%22%20font-size%3D%2212%22%20letter-spacing%3D%222%22%20fill%3D%22%23362d4b%22%3EPROJECT%2002%20/%20CONCEPT%20COVER%3C/text%3E%3C/svg%3E"
                alt="Offre Bac educational website screenshot"
@@ -2769,7 +2803,7 @@ html[dir=rtl] .hero h1,html[dir=rtl] .section-heading,html[dir=rtl] .contact-box
 
           <span class="project-index">PROJECT / 02</span>
 
-        </div>
+        </a>
 
         <div class="project-content">
 
@@ -3101,10 +3135,11 @@ const translations = {
     projectsLabel: "04 — SELECTED WORK",
     projectsTitle: 'Featured <span>projects.</span>',
     projectsDescription: "A selection of digital projects built with creativity, strategy and attention to detail.",
-    projectCount: "02 PROJECTS",
+    projectCount: "03 PROJECTS",
     projectCategory: "WEB DEVELOPMENT",
     project1Text: "A modern digital platform designed to provide visitors with a clear, accessible and engaging experience.",
     project2Text: "An educational platform built to offer students a modern and accessible digital learning experience.",
+    project3Text: "A website project with a clear visual identity and a direct path to explore it online.",
     visitProject: "EXPLORE PROJECT",
 
     processLabel: "05 — HOW I WORK",
@@ -3182,10 +3217,11 @@ const translations = {
     projectsLabel: "04 — PROJETS SÉLECTIONNÉS",
     projectsTitle: 'Projets <span>remarquables.</span>',
     projectsDescription: "Une sélection de projets digitaux réalisés avec créativité, stratégie et attention aux détails.",
-    projectCount: "02 PROJETS",
+    projectCount: "03 PROJETS",
     projectCategory: "DÉVELOPPEMENT WEB",
     project1Text: "Une plateforme numérique moderne offrant aux visiteurs une expérience claire, accessible et agréable.",
     project2Text: "Une plateforme éducative conçue pour offrir aux élèves une expérience d'apprentissage moderne et accessible.",
+    project3Text: "Un projet web à découvrir en ligne, présenté avec une identité visuelle claire.",
     visitProject: "DÉCOUVRIR LE PROJET",
 
     processLabel: "05 — MA MÉTHODE",
@@ -3263,10 +3299,11 @@ const translations = {
     projectsLabel: "04 — أعمال مختارة",
     projectsTitle: 'مشاريعي <span>المميزة.</span>',
     projectsDescription: "مجموعة من المشاريع الرقمية التي أنجزتها بالاعتماد على الإبداع والتخطيط والاهتمام بالتفاصيل.",
-    projectCount: "مشروعان",
+    projectCount: "٣ مشاريع",
     projectCategory: "تطوير المواقع",
     project1Text: "منصة رقمية عصرية صممت لتقديم تجربة استخدام واضحة وسهلة وجذابة للزوار.",
     project2Text: "منصة تعليمية رقمية تهدف إلى توفير تجربة تعلم عصرية وسهلة الوصول للتلاميذ.",
+    project3Text: "مشروع ويب بهوية بصرية واضحة، يمكنك زيارته واكتشافه مباشرة.",
     visitProject: "اكتشف المشروع",
 
     processLabel: "05 — طريقة عملي",
