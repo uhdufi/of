@@ -74,6 +74,7 @@ textarea::placeholder,.note{color:var(--muted)}
 <form><textarea id="input" rows="1" maxlength="2500" placeholder="كتب سؤالك بالدارجة…" aria-label="سؤالك" required></textarea><button class="send" type="submit">صيفط ↑</button></form>
 <p class="note">الجواب كيتولّد بـ Gemini وقد يغلط.</p></div></footer>
 <script>
+const CHAT_API_URL = 'https://rouane-darija-chat.adamrouane129.workers.dev/api/chat';
 const form = document.querySelector('form');
 const input = document.querySelector('#input');
 const send = document.querySelector('.send');
@@ -150,7 +151,7 @@ async function ask() {
   content.append(dots);
   window.scrollTo(0, document.body.scrollHeight);
   try {
-    const response = await fetch('/api/chat', {
+    const response = await fetch(CHAT_API_URL, {
       method: 'POST', headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({messages: history.slice(-11)}), signal: request.signal
     });
