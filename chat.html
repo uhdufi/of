@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="ary" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f5f3eb">
+<meta name="description" content="هضر معايا، مساعد ذكي بالدارجة المغربية">
+<title>هضر معايا</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+<style>
+ :root{--paper:#f5f3eb;--card:#faf9f4;--ink:#20231e;--olive:#283521;--accent:#c5ed54;--muted:#555b4e;--line:#24271e26}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 Cairo,Tahoma,sans-serif}
+button,textarea{font:inherit}
+button{cursor:pointer}
+button:disabled{opacity:.55;cursor:wait}
+:is(button,textarea,a):focus-visible{outline:2px solid #53682a;outline-offset:3px}
+header{border-bottom:1px solid var(--line);background:var(--paper);position:sticky;top:0;z-index:1}
+.bar{width:min(100% - 36px,1320px);margin:auto;display:flex;justify-content:space-between;align-items:center;gap:14px;min-height:76px}
+.brand{display:flex;gap:9px;align-items:center;font:800 16px Manrope,Arial,sans-serif;color:var(--olive);text-decoration:none;direction:ltr}
+.brand img{width:34px;height:34px}
+.mark{width:45px;height:45px;display:grid;place-items:center;background:var(--accent);color:var(--olive);border-radius:6px;font-size:24px}
+.outline{color:var(--olive);background:var(--card);border:1px solid var(--line);border-radius:6px;padding:8px 13px;font-weight:700}
+.outline:hover{border-color:var(--olive)}
+main,.dock-inner{width:min(100% - 36px,960px);margin:auto}
+main{padding-block:32px;min-height:calc(100dvh - 198px)}
+.welcome{border:1px solid var(--line);border-radius:6px;padding:clamp(20px,4vw,48px);background:var(--card);box-shadow:0 24px 60px #252d1510}
+.intro{display:flex;align-items:center;gap:15px}
+h1{font-size:clamp(37px,6vw,68px);line-height:1.2;margin:0;color:var(--olive)}
+.lead{color:var(--muted);margin:12px 0 27px}
+.ideas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.ideas button{text-align:start;padding:13px;background:var(--paper)}
+.ideas span{display:block;color:#4e6427;font-size:13px;margin-bottom:3px}
+article{margin:0 0 15px;padding:13px 16px;border-radius:6px;background:var(--card);border:1px solid var(--line);width:fit-content;max-width:89%;overflow-wrap:anywhere}
+article.user{margin-inline-start:auto;background:#e7edda}
+article b{display:block;color:var(--olive);font-size:13px;margin-bottom:4px}
+article div{white-space:pre-wrap}
+.dock{position:sticky;bottom:0;background:var(--paper);padding:10px 0 max(12px,env(safe-area-inset-bottom));border-top:1px solid var(--line)}
+form{display:flex;gap:8px;align-items:end;background:var(--card);border:1px solid var(--line);border-radius:6px;padding:7px}
+textarea{flex:1;min-width:0;resize:vertical;border:0;background:transparent;color:var(--ink);padding:8px;max-height:112px}
+textarea::placeholder,.note{color:var(--muted)}
+.send{background:var(--accent);color:var(--olive);border:1px solid #526731;border-radius:6px;padding:8px 18px;font-weight:800}
+.note{margin:5px 0 0;font-size:12px;text-align:center}
+#status{color:#8c3726;margin:4px 0;font-size:14px}
+#retry{margin-bottom:12px}
+.thinking{display:inline-flex;align-items:center;gap:6px;padding-inline:3px}
+.thinking i{width:7px;height:7px;border-radius:50%;background:#53682a;animation:bounce 1.05s ease-in-out infinite}
+.thinking i:nth-child(2){animation-delay:.14s}.thinking i:nth-child(3){animation-delay:.28s}
+@keyframes bounce{0%,60%,100%{transform:translateY(0);opacity:.55}30%{transform:translateY(-5px);opacity:1}}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media(prefers-reduced-motion:reduce){.thinking i{animation:none}}
+@media(max-width:560px){.ideas{grid-template-columns:1fr}.ideas button{padding:9px 13px}.ideas span{display:inline;margin-inline-end:8px}.welcome{padding-top:22px}.bar{min-height:64px}main{padding-top:14px}}
+</style>
+</head>
+<body>
+<header><div class="bar"><a class="brand" href="./index.html" aria-label="رجوع للموقع"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2048%2048%22%3E%3Crect%20width%3D%2248%22%20height%3D%2248%22%20rx%3D%226%22%20fill%3D%22%23283521%22/%3E%3Cpath%20d%3D%22M12%2012h11c18%200%2018%2024%200%2024H12zm8%207v10h3c7%200%207-10%200-10z%22%20fill%3D%22%23c5ed54%22/%3E%3C/svg%3E" alt="">DIGITAL.</a><button class="outline" id="reset" type="button">محادثة جديدة ＋</button></div></header>
+<main>
+<section id="welcome" class="welcome">
+<div class="intro"><span class="mark" aria-hidden="true">✦</span><h1>هضر معايا</h1></div>
+<p class="lead">سلام! أنا مساعد ذكي كيهضر بالدارجة المغربية. فاش نعاونك اليوم؟</p>
+<div class="ideas">
+<button class="outline" type="button" data-prompt="عطيني وصفة سهلة للحريرة المغربية."><span>الطبخ</span>كيفاش نطيب الحريرة؟</button>
+<button class="outline" type="button" data-prompt="عاونّي نكتب مساج شكر قصير لصاحبتي بالدارجة."><span>الكتابة</span>عاونّي نكتب مساج</button>
+<button class="outline" type="button" data-prompt="شرح ليا كيفاش كيخدم الذكاء الاصطناعي بالدارجة وبمثال بسيط."><span>التعلّم</span>شرح ليا الذكاء الاصطناعي</button>
+</div>
+</section>
+<div id="messages" role="log" aria-label="المحادثة"></div>
+<p id="status" role="status"></p><span id="activity" class="sr-only" role="status"></span>
+<button class="outline" id="retry" hidden type="button">عاود جرّب</button>
+</main>
+<footer class="dock"><div class="dock-inner">
+<form><textarea id="input" rows="1" maxlength="2500" placeholder="كتب سؤالك بالدارجة…" aria-label="سؤالك" required></textarea><button class="send" type="submit">صيفط ↑</button></form>
+<p class="note">الجواب كيتولّد بـ Gemini وقد يغلط.</p></div></footer>
+<script>
+const form = document.querySelector('form');
+const input = document.querySelector('#input');
+const send = document.querySelector('.send');
+const welcome = document.querySelector('#welcome');
+const messages = document.querySelector('#messages');
+const status = document.querySelector('#status');
+const retry = document.querySelector('#retry');
+const activity = document.querySelector('#activity');
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+let history = [];
+let active = null;
+
+function addMessage(role, text) {
+  const item = document.createElement('article');
+  item.className = role;
+  const label = document.createElement('b');
+  label.textContent = role === 'user' ? 'نتا' : 'هضر معايا';
+  const content = document.createElement('div');
+  content.dir = 'auto';
+  content.textContent = text;
+  item.append(label, content);
+  messages.append(item);
+  return content;
+}
+
+function showReply(content, reply, request) {
+  if (reducedMotion.matches) {
+    content.textContent = reply;
+    window.scrollTo(0, document.body.scrollHeight);
+    return Promise.resolve();
+  }
+  const characters = Array.from(reply);
+  const duration = Math.min(4000, characters.length * 17);
+  return new Promise(resolve => {
+    let frame;
+    let start;
+    let displayed = 0;
+    function finish() {
+      cancelAnimationFrame(frame);
+      request.signal.removeEventListener('abort', finish);
+      resolve();
+    }
+    function draw(now) {
+      start ??= now;
+      const count = Math.min(characters.length, 1 + Math.floor((now - start) / duration * characters.length));
+      if (count > displayed) {
+        const nearBottom = document.documentElement.scrollHeight - window.innerHeight - window.scrollY < 100;
+        content.textContent += characters.slice(displayed, count).join('');
+        displayed = count;
+        if (nearBottom) window.scrollTo(0, document.body.scrollHeight);
+      }
+      if (count === characters.length) finish();
+      else frame = requestAnimationFrame(draw);
+    }
+    request.signal.addEventListener('abort', finish, {once:true});
+    frame = requestAnimationFrame(draw);
+  });
+}
+
+async function ask() {
+  if (active) return;
+  const request = new AbortController();
+  active = request;
+  send.disabled = true;
+  retry.hidden = true;
+  status.textContent = '';
+  activity.textContent = 'كنوجد ليك الجواب…';
+  messages.setAttribute('aria-busy', 'true');
+  const content = addMessage('model', '');
+  const dots = document.createElement('span');
+  dots.className = 'thinking';
+  dots.setAttribute('aria-hidden', 'true');
+  dots.append(...Array.from({length:3}, () => document.createElement('i')));
+  content.append(dots);
+  window.scrollTo(0, document.body.scrollHeight);
+  try {
+    const response = await fetch('/api/chat', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({messages: history.slice(-11)}), signal: request.signal
+    });
+    if (!response.headers.get('content-type')?.includes('application/json')) {
+      throw new Error('الشات خاصو يتشغّل مع السيرفر ديالو.');
+    }
+    const data = await response.json();
+    if (!response.ok || !data.reply) throw new Error(data.error || 'وقع مشكل فالاتصال.');
+    if (active !== request) return;
+    history.push({role:'model', text:data.reply});
+    activity.textContent = '';
+    content.replaceChildren();
+    await showReply(content, data.reply, request);
+  } catch (error) {
+    if (active !== request) return;
+    content.parentElement.remove();
+    status.textContent = error instanceof TypeError ? 'وقع مشكل فالاتصال.' : error.message;
+    retry.hidden = false;
+  } finally {
+    if (active === request) {
+      active = null;
+      send.disabled = false;
+      activity.textContent = '';
+      messages.removeAttribute('aria-busy');
+      if (!retry.hidden) window.scrollTo(0, document.body.scrollHeight);
+    }
+  }
+}
+
+form.addEventListener('submit', event => {
+  event.preventDefault();
+  const text = input.value.trim();
+  if (!text || active) return;
+  if (history.at(-1)?.role === 'user') history.pop();
+  history.push({role:'user',text});
+  addMessage('user',text);
+  welcome.hidden = true;
+  input.value = '';
+  ask();
+});
+input.addEventListener('keydown', event => {
+  if (event.key === 'Enter' && !event.shiftKey && !event.isComposing) {
+    event.preventDefault();
+    form.requestSubmit();
+  }
+});
+document.querySelectorAll('[data-prompt]').forEach(button => button.onclick = () => {
+  input.value = button.dataset.prompt;
+  form.requestSubmit();
+});
+retry.onclick = ask;
+document.querySelector('#reset').onclick = () => {
+  active?.abort();
+  active = null;
+  history = [];
+  messages.replaceChildren();
+  messages.removeAttribute('aria-busy');
+  activity.textContent = '';
+  welcome.hidden = false;
+  retry.hidden = true;
+  status.textContent = '';
+  send.disabled = false;
+  input.value = '';
+  input.focus();
+};
+</script>
+</body></html>
